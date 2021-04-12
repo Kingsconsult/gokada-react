@@ -4,8 +4,8 @@ import { databaseResult, debounceCall, setMap } from "../helper/services";
 export default function MapView() {
   const [state, setstate] = useState({
     pickup: "",
-    dropoff: "",
-  });
+    dropoff: ""
+  })
 
   const [appState, setAppState] = useState({
     data: { addresses: [], isDatabase: false },
@@ -23,17 +23,20 @@ export default function MapView() {
 
     if (!value.length) return;
     let response = await debouncRequest(value);
-    setAppState({ data: response, currentType: key });
+    // console.log("thr response",response)
+    setAppState({ data: response, currentType: key })
+
   };
 
   const handleClick = (value) => {
-    let dropoffposition = state.dropoff.length && state.dropoff;
-    let pickUpposition = state.pickup.length && state.pickup;
+    let dropoffposition = state.dropoff.length && state.dropoff
+    let pickUpposition = state.pickup.length && state.pickup
 
-    setMap(dropoffposition, pickUpposition);
+    setMap(dropoffposition, pickUpposition)
 
     if (!appState.data.isdatabase) {
-      fetch('https://kingsley-gokada.herokuapp.com/api/addresses', {
+
+      fetch('http://127.0.0.1:8090/api/addresses', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json',
@@ -49,26 +52,28 @@ export default function MapView() {
         .catch((error) => {
           console.error('Error:', error);
         });
+
       // databaseResult.push(value); //remove thjis line and make post request
     }
 
     if (appState.currentType === "pickup") {
       setstate({ ...state, pickup: value });
-      setAppState({ ...appState, data: { addresses: [], isdatabase: null } });
+      setAppState({ ...appState, data: { addresses: [], isdatabase: null } })
       return;
     }
 
     setstate({ ...state, dropoff: value });
-    setAppState({ ...appState, data: { addresses: [], isdatabase: null } });
+    setAppState({ ...appState, data: { addresses: [], isdatabase: null } })
   };
 
   useEffect(() => {
-    setMap();
-  }, []);
+    setMap()
+  }, [])
 
   return (
     <div>
       <form>
+
         <div className="options">
           <input
             onChange={HandleSearchPress}
@@ -83,19 +88,19 @@ export default function MapView() {
             placeholder="dropoff locaton"
           />
         </div>
-        <div className="drop-down-container">
-          <div ul className="drop-down">
-            {appState.data.addresses.map((searchResult, index) => (
-              <li key={index} onClick={() => handleClick(searchResult)}>
-                {searchResult}
-              </li>
-            ))}
-          </div>
-        </div>
+        <ul ul className="drop-down">
+          {appState.data.addresses.map((searchResult, index) => (
+            <li
+              key={index}
+              onClick={() => handleClick(searchResult)}
+            >
+              {searchResult}
+            </li>
+          ))}
+        </ul>
       </form>
 
-      <div id="map" style={{ width: "100vw", height: "80vh" }}></div>
+      <div id="map" style={{ width: '100vw', height: '80vh' }}></div>
     </div>
   );
 }
-

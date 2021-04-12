@@ -18,6 +18,14 @@ code {
   padding:0px;
 }
 
+form{
+  display:block;
+  position: relative;
+  height:max-content;
+  padding:2em;
+  background-color:darkgrey;
+}
+
 .options{
   width:370px;
   height: 160px;
@@ -33,25 +41,21 @@ code {
   outline:0;
   height:60px;
   border:0px;
-  padding:1.5em;
+  padding:1.5em 1.5em 0;
 }
 
-form{
-  display:block;
-  position: relative;
-  height:auto;
-  padding:2em;
-  background-color:darkgrey;
+.drop-down-container{
+  position: absolute;
 }
 
 .drop-down{
-  position: absolute;
+  position: relative;
   display: flex;
   flex-direction: column;
+  top:-33px;
+  left:10px;
   justify-content: flex-start;
   align-items: center;
-  bottom:-215px;
-  left:42px;
   height:auto;
   width:350px;
   overflow: hidden;

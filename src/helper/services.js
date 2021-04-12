@@ -96,7 +96,7 @@ export const debounceCall = (timer) => {
         try {
 
           //let databaseResult = await fetch('url').json()
-          let databaseResult = await fetch('http://127.0.0.1:8090/api/addresses')
+          let databaseResult = await fetch('https://kingsley-gokada.herokuapp.com/api/addresses')
           .then(response => response.json())
           .then(data => data);
 
