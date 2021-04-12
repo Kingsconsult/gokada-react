@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { databaseResult, debounceCall, setMap } from "../helper/services";
+import { debounceCall, setMap } from "../helper/services";
 
 export default function MapView() {
   const [state, setstate] = useState({
@@ -49,7 +49,6 @@ export default function MapView() {
         .catch((error) => {
           console.error('Error:', error);
         });
-      // databaseResult.push(value); //remove thjis line and make post request
     }
 
     if (appState.currentType === "pickup") {
