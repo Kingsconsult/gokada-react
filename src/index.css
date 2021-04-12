@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+*{
+  box-sizing: border-box;
+  margin:0px;
+  padding:0px;
+}
+
+.options{
+  width:370px;
+  height: 160px;
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.options input{
+  width: 350px;
+  font-size: large;
+  outline:0;
+  height:60px;
+  border:0px;
+  padding:1.5em;
+}
+
+form{
+  display:block;
+  position: relative;
+  height:auto;
+  padding:2em;
+  background-color:darkgrey;
+}
+
+.drop-down{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  bottom:-215px;
+  left:42px;
+  height:auto;
+  width:350px;
+  overflow: hidden;
+  z-index: 9999;
+  background-color: white;
+}
+
+.drop-down li{
+  display: block;
+  width:350px;
+  list-style: none;
+  padding:1.2em;
+  text-align: left;
+  border:1px solid #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
